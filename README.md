@@ -31,5 +31,5 @@ Result
 
 https://user-images.githubusercontent.com/55078043/154182901-bb7fd5fb-4eb1-46dd-bd5e-3cc9bacf95c7.mp4
 
-
+Note: I started recording from 12 seconds approximately. Preparation for recording took time so the result shows from the moment which indicates 9 seconds left.
 
