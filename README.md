@@ -8,7 +8,11 @@ PyQt QLabel for timer feature
 ```pip3 install git+https://github.com/yjg30737/pyqt-timer-label.git --upgrade```
 
 ## Detailed Description
-You can set start hour/min/sec. Same to end. You can use this when you want to make a timer label which follows ```hh:mm:ss``` format.
+You can set start hour/min/sec. Same to end. You can use this when you want to make a timer label which follows ```hh:mm:ss``` format. By the way, default end time is 00:00:00. You can change it with methods i'll explain below.
+
+## Method Overview
+* ```setStartHour(h: int)```, ```setStartMinute(m: int)```, ```setStartSecond(s: int)```. Same to end.
+* ```setTimerReverse(f: bool)``` to make timer go reversed. Default is True, which means subtracts one second. 
 
 ## Example
 Code Sample
