@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QWidget, QLabel, QGridLayout
 
 
 class TimerLabel(QWidget):
+    doubleClicked = pyqtSignal()
     stopped = pyqtSignal()
 
     def __init__(self, parent=None):
@@ -108,3 +109,6 @@ class TimerLabel(QWidget):
             print(sys.exc_info()[2].tb_lineno)
             print(sys.exc_info())
 
+    def mouseDoubleClickEvent(self, e):
+        self.doubleClicked.emit()
+        return super().mouseDoubleClickEvent(e)
