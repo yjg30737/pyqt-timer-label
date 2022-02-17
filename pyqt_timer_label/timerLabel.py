@@ -100,7 +100,7 @@ class TimerLabel(QLabel):
             print(sys.exc_info()[2].tb_lineno)
             print(sys.exc_info())
 
-    def __stop(self):
+    def stop(self):
         try:
             self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
             self.setText(self.__startTime.toString("hh:mm:ss"))
