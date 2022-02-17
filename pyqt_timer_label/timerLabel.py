@@ -7,6 +7,8 @@ from PyQt5.QtWidgets import QLabel
 
 class TimerLabel(QLabel):
     doubleClicked = pyqtSignal()
+    prepared = pyqtSignal()
+    started = pyqtSignal()
     stopped = pyqtSignal()
 
     def __init__(self, parent=None):
@@ -79,12 +81,14 @@ class TimerLabel(QLabel):
 
     def __prepareToTimer(self):
         self.__timerTicking()
+        self.prepared.emit()
 
     def start(self):
         self.__timer.timeout.connect(self.__timerTicking)
         self.__timer.singleShot(self.__startTime.msec(), self.__prepareToTimer)
         # update the timer every second
         self.__timer.start(1000)
+        self.started.emit()
 
     def __timerTicking(self):
         try:
@@ -104,10 +108,9 @@ class TimerLabel(QLabel):
         try:
             self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
             self.setText(self.__startTime.toString("hh:mm:ss"))
-
             self.__timer.stop()
-
             self.__timer.timeout.disconnect(self.__timerTicking)
+            self.stopped.emit()
 
         except Exception as e:
             print(e)
