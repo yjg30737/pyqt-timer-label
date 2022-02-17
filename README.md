@@ -13,7 +13,7 @@ You can set start hour/min/sec. Same to end. You can use this when you want to m
 ## Method, Signal Overview
 * ```setStartHour(h: int)```, ```setStartMinute(m: int)```, ```setStartSecond(s: int)```. Same to end.
 * ```setTimerReverse(f: bool)``` to make timer go reversed. Default is True, which means subtracts one second.
-* ```start()```, ```pause()```, ```restart()```, ```stop()``` to start and stop the timer.
+* ```start()```, ```pause()```, ```restart()```, ```stop()``` to start, pause, restart, stop the timer.
 * There are useful signals like ```doubleClicked```, ```prepared```, ```started```, ```paused```, ```restarted```, ```stopped```.
 
 ## Example
