@@ -9,6 +9,8 @@ class TimerLabel(QLabel):
     doubleClicked = pyqtSignal()
     prepared = pyqtSignal()
     started = pyqtSignal()
+    paused = pyqtSignal()
+    restarted = pyqtSignal()
     stopped = pyqtSignal()
 
     def __init__(self, parent=None):
@@ -103,6 +105,14 @@ class TimerLabel(QLabel):
             print(e)
             print(sys.exc_info()[2].tb_lineno)
             print(sys.exc_info())
+
+    def pause(self):
+        self.__timer.stop()
+        self.paused.emit()
+
+    def restart(self):
+        self.__timer.start()
+        self.restarted.emit()
 
     def stop(self):
         try:
