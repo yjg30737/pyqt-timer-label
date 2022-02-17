@@ -96,7 +96,7 @@ class TimerLabel(QLabel):
             time_left_text = self.__startTime.toString(self.__format)
             self.setText(time_left_text)
             if self.__end_text_time == time_left_text:
-                self.__stop()
+                self.stop()
             else:
                 pass
         except Exception as e:
