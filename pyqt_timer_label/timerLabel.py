@@ -15,9 +15,9 @@ class TimerLabel(QWidget):
         self.__initUi()
 
     def __initVal(self):
-        self.__startHour = 0
-        self.__startMin = 0
-        self.__startSec = 0
+        self.__start_hour = 0
+        self.__start_min = 0
+        self.__start_sec = 0
 
         self.__startTime = QTime()
         self.__endTime = QTime()
@@ -42,34 +42,34 @@ class TimerLabel(QWidget):
             self.__timer_interval = 1
 
     def setStartHMS(self):
-        self.__startTime.setHMS(self.__startHour, self.__startMin, self.__startSec)
+        self.__startTime.setHMS(self.__start_hour, self.__start_min, self.__start_sec)
         time_left_text = self.__startTime.toString('hh:mm:ss')
         self.__lbl.setText(time_left_text)
 
     def setEndHMS(self):
-        self.__startTime.setHMS(self.__startHour, self.__startMin, self.__startSec)
+        self.__startTime.setHMS(self.__start_hour, self.__start_min, self.__start_sec)
         time_left_text = self.__startTime.toString('hh:mm:ss')
         self.__lbl.setText(time_left_text)
 
-    def setStartHour(self, h):
-        self.__startHour = h
+    def setStartHour(self, h: int):
+        self.__start_hour = h
         self.setStartHMS()
 
-    def setStartMinute(self, m):
-        self.__startMin = m
+    def setStartMinute(self, m: int):
+        self.__start_min = m
         self.setStartHMS()
 
-    def setStartSecond(self, s):
-        self.__startSec = s
+    def setStartSecond(self, s: int):
+        self.__start_sec = s
         self.setStartHMS()
 
-    def setEndHour(self, h):
+    def setEndHour(self, h: int):
         pass
 
-    def setEndMinute(self, m):
+    def setEndMinute(self, m: int):
         pass
 
-    def setEndSecond(self, s):
+    def setEndSecond(self, s: int):
         pass
 
     def __prepareToTimer(self):
@@ -97,7 +97,7 @@ class TimerLabel(QWidget):
 
     def __stop(self):
         try:
-            self.__startTime = QTime(self.__startHour, self.__startMin, self.__startSec)
+            self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
             self.__lbl.setText(self.__startTime.toString("hh:mm:ss"))
 
             self.__timer.stop()
