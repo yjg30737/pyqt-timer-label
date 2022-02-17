@@ -19,6 +19,10 @@ class TimerLabel(QWidget):
         self.__start_min = 0
         self.__start_sec = 0
 
+        self.__end_hour = 0
+        self.__end_min = 0
+        self.__end_sec = 0
+
         self.__startTime = QTime()
         self.__endTime = QTime()
 
@@ -47,9 +51,7 @@ class TimerLabel(QWidget):
         self.__lbl.setText(time_left_text)
 
     def setEndHMS(self):
-        self.__startTime.setHMS(self.__start_hour, self.__start_min, self.__start_sec)
-        time_left_text = self.__startTime.toString('hh:mm:ss')
-        self.__lbl.setText(time_left_text)
+        self.__endTime.setHMS(self.__end_hour, self.__end_min, self.__end_sec)
 
     def setStartHour(self, h: int):
         self.__start_hour = h
@@ -64,13 +66,13 @@ class TimerLabel(QWidget):
         self.setStartHMS()
 
     def setEndHour(self, h: int):
-        pass
+        self.__end_hour = h
 
     def setEndMinute(self, m: int):
-        pass
+        self.__end_min = m
 
     def setEndSecond(self, s: int):
-        pass
+        self.__end_sec = s
 
     def __prepareToTimer(self):
         self.__timerTicking()
@@ -86,7 +88,7 @@ class TimerLabel(QWidget):
             self.__startTime = self.__startTime.addSecs(self.__timer_interval)
             time_left_text = self.__startTime.toString('hh:mm:ss')
             self.__lbl.setText(time_left_text)
-            if self.__endTime == time_left_text:
+            if self.__endTime == self.__startTime:
                 self.__stop()
             else:
                 pass
