@@ -2,10 +2,10 @@ import sys
 
 from PyQt5.QtCore import Qt, pyqtSignal, QTime, QTimer
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QWidget, QLabel, QGridLayout
+from PyQt5.QtWidgets import QLabel
 
 
-class TimerLabel(QWidget):
+class TimerLabel(QLabel):
     doubleClicked = pyqtSignal()
     stopped = pyqtSignal()
 
@@ -30,18 +30,13 @@ class TimerLabel(QWidget):
         self.__timer = QTimer(self)
         self.__timer_interval = -1
 
-        self.__lbl = QLabel()
-
         # init end time (00:00:00 by default)
         self.setEndHMS()
 
     def __initUi(self):
         self.setStartHMS()
-        self.__lbl.setAlignment(Qt.AlignCenter)
-        self.__lbl.setFont(QFont('Arial', 24))
-        lay = QGridLayout()
-        lay.addWidget(self.__lbl)
-        self.setLayout(lay)
+        self.setAlignment(Qt.AlignCenter)
+        self.setFont(QFont('Arial', 24))
 
     def setTimerReverse(self, f: bool):
         if f:
@@ -52,7 +47,7 @@ class TimerLabel(QWidget):
     def setStartHMS(self):
         self.__startTime.setHMS(self.__start_hour, self.__start_min, self.__start_sec)
         time_left_text = self.__startTime.toString(self.__format)
-        self.__lbl.setText(time_left_text)
+        self.setText(time_left_text)
 
     def setEndHMS(self):
         self.__endTime.setHMS(self.__end_hour, self.__end_min, self.__end_sec)
@@ -95,7 +90,7 @@ class TimerLabel(QWidget):
         try:
             self.__startTime = self.__startTime.addSecs(self.__timer_interval)
             time_left_text = self.__startTime.toString(self.__format)
-            self.__lbl.setText(time_left_text)
+            self.setText(time_left_text)
             if self.__end_text_time == time_left_text:
                 self.__stop()
             else:
@@ -108,7 +103,7 @@ class TimerLabel(QWidget):
     def __stop(self):
         try:
             self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
-            self.__lbl.setText(self.__startTime.toString("hh:mm:ss"))
+            self.setText(self.__startTime.toString("hh:mm:ss"))
 
             self.__timer.stop()
 
