@@ -37,6 +37,7 @@ if __name__ == "__main__":
     lbl.start()
     sys.exit(app.exec_())
 ```
+Start time is 00:00:15. End time is by default so it is 00:00:00. 
 
 Result
 
