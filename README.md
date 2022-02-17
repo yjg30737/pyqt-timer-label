@@ -7,10 +7,13 @@ PyQt QLabel for timer feature
 ## Setup
 ```pip3 install git+https://github.com/yjg30737/pyqt-timer-label.git --upgrade```
 
+## Detailed Description
+You can set start hour/min/sec. Same to end. You can use this when you want to make a timer label which follows ```hh:mm:ss``` format.
+
 ## Example
 Code Sample
 ```python
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QWidget, QGridLayout
 from pyqt_timer_label import TimerLabel
 
 
@@ -22,7 +25,11 @@ if __name__ == "__main__":
     lbl.setStartHour(0)
     lbl.setStartMinute(0)
     lbl.setStartSecond(15)
-    lbl.show()
+    widget = QWidget()
+    lay = QGridLayout()
+    lay.addWidget(lbl)
+    widget.setLayout(lay)
+    widget.show()
     lbl.start()
     sys.exit(app.exec_())
 ```
