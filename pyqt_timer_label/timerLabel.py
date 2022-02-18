@@ -115,13 +115,13 @@ class TimerLabel(QLabel):
         self.restarted.emit()
 
     def refresh(self):
-        self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
+        self.__resetStartTime()
         self.setText(self.__startTime.toString(self.__format))
         self.refreshed.emit()
 
     def stop(self):
         try:
-            self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
+            self.__resetStartTime()
             self.__timer.stop()
             self.__timer.timeout.disconnect(self.__timerTicking)
             self.stopped.emit()
@@ -129,6 +129,9 @@ class TimerLabel(QLabel):
             print(e)
             print(sys.exc_info()[2].tb_lineno)
             print(sys.exc_info())
+
+    def __resetStartTime(self):
+        self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
 
     def mouseDoubleClickEvent(self, e):
         self.doubleClicked.emit()
