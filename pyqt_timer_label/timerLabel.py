@@ -117,7 +117,7 @@ class TimerLabel(QLabel):
     def stop(self):
         try:
             self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
-            self.setText(self.__startTime.toString("hh:mm:ss"))
+            self.setText(self.__startTime.toString(self.__format))
             self.__timer.stop()
             self.__timer.timeout.disconnect(self.__timerTicking)
             self.stopped.emit()
