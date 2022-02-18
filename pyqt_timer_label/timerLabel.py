@@ -11,6 +11,7 @@ class TimerLabel(QLabel):
     started = pyqtSignal()
     paused = pyqtSignal()
     restarted = pyqtSignal()
+    refreshed = pyqtSignal()
     stopped = pyqtSignal()
 
     def __init__(self, parent=None):
@@ -96,11 +97,10 @@ class TimerLabel(QLabel):
         try:
             self.__startTime = self.__startTime.addSecs(self.__timer_interval)
             time_left_text = self.__startTime.toString(self.__format)
-            self.setText(time_left_text)
             if self.__end_text_time == time_left_text:
                 self.stop()
             else:
-                pass
+                self.setText(time_left_text)
         except Exception as e:
             print(e)
             print(sys.exc_info()[2].tb_lineno)
@@ -114,14 +114,17 @@ class TimerLabel(QLabel):
         self.__timer.start()
         self.restarted.emit()
 
+    def refresh(self):
+        self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
+        self.setText(self.__startTime.toString(self.__format))
+        self.refreshed.emit()
+
     def stop(self):
         try:
             self.__startTime = QTime(self.__start_hour, self.__start_min, self.__start_sec)
-            self.setText(self.__startTime.toString(self.__format))
             self.__timer.stop()
             self.__timer.timeout.disconnect(self.__timerTicking)
             self.stopped.emit()
-
         except Exception as e:
             print(e)
             print(sys.exc_info()[2].tb_lineno)
