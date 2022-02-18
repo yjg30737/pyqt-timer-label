@@ -11,6 +11,7 @@ class TimerLabel(QLabel):
     started = pyqtSignal()
     paused = pyqtSignal()
     restarted = pyqtSignal()
+    resetSignal = pyqtSignal()
     refreshed = pyqtSignal()
     stopped = pyqtSignal()
 
@@ -117,6 +118,13 @@ class TimerLabel(QLabel):
         self.__timer.start()
         self.restarted.emit()
 
+    def reset(self):
+        self.__resetStartTime()
+        self.setText(self.__startTime.toString(self.__format))
+        self.__timer.stop()
+        self.__timer.timeout.disconnect(self.__timerTicking)
+        self.resetSignal.emit()
+
     def refresh(self):
         self.__resetStartTime()
         self.setText(self.__startTime.toString(self.__format))
@@ -124,7 +132,7 @@ class TimerLabel(QLabel):
 
     def stop(self):
         try:
-            self.__resetStartTime()
+            self.refresh()
             self.__timer.stop()
             self.__timer.timeout.disconnect(self.__timerTicking)
             self.stopped.emit()
