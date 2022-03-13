@@ -99,7 +99,7 @@ class TimerLabel(QLabel):
 
     def __timerTicking(self):
         try:
-            self.__startTime = self.__startTime.addSecs(self.__timer_interval)
+            self.__startTime = self.__startTime.addMSecs(self.__timer_interval)
             time_left_text = self.__startTime.toString(self.__format)
             if self.__isTimesUp(time_left_text):
                 self.stop()
