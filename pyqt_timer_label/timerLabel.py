@@ -90,8 +90,8 @@ class TimerLabel(QLabel):
     def start(self):
         self.__timer.timeout.connect(self.__timerTicking)
         self.__timer.singleShot(self.__startTime.msec(), self.__prepareToTimer)
-        # update the timer every second
-        self.__timer.start(1000)
+        # update the timer every millisecond
+        self.__timer.start(1)
         self.started.emit()
 
     def __isTimesUp(self, time_left_text):
