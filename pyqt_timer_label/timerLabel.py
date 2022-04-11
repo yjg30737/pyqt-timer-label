@@ -150,5 +150,5 @@ class TimerLabel(QLabel):
         return super().mouseDoubleClickEvent(e)
 
     def resizeEvent(self, e):
-        self.setFont(QFont('Arial', self.widthMM() // 2))
+        self.setFont(QFont('Arial', max(10, self.widthMM() // 2)))
         return super().resizeEvent(e)
