@@ -39,6 +39,8 @@ class TimerLabel(QLabel):
         # init end time (00:00:00 by default)
         self.setEndHMS()
 
+        self.__auto_resize_flag = True
+
     def __initUi(self):
         self.setStartHMS()
         self.setAlignment(Qt.AlignCenter)
@@ -127,6 +129,9 @@ class TimerLabel(QLabel):
         self.__timer.stop()
         self.__timer.timeout.disconnect(self.__timerTicking)
 
+    def setAutoResize(self, f: bool):
+        self.__auto_resize_flag = f
+
     def reset(self):
         self.__resetTimer()
         self.resetSignal.emit()
@@ -150,5 +155,6 @@ class TimerLabel(QLabel):
         return super().mouseDoubleClickEvent(e)
 
     def resizeEvent(self, e):
-        self.setFont(QFont('Arial', max(10, self.widthMM() // 2)))
+        if self.__auto_resize_flag:
+            self.setFont(QFont('Arial', max(10, self.widthMM() // 2)))
         return super().resizeEvent(e)
