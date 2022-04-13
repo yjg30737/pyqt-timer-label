@@ -15,6 +15,7 @@ You can set start hour/min/sec. Same to end. You can use this when you want to m
 * ```setTimerReverse(f: bool)``` to make timer go reversed. Default is True, which means subtracts one second.
 * There are useful methods like ```start()```, ```pause()```, ```restart()```, ```refresh()```, ```reset()```, ```stop()``` as well as useful signals like ```doubleClicked```, ```prepared```, ```started```, ```paused```, ```restarted```, ```refreshed```, ```resetSignal```, ```stopped```.
 * `setAutoResize(f: bool)` - Make label resize itself based on window's size.
+* `isPaused() -> bool` - Check if the timer being paused or not
 
 ## Example
 Code Sample
