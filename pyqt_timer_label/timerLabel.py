@@ -150,6 +150,9 @@ class TimerLabel(QLabel):
             print(sys.exc_info()[2].tb_lineno)
             print(sys.exc_info())
 
+    def isPaused(self) -> bool:
+        return self.__timer.isActive()
+
     def mouseDoubleClickEvent(self, e):
         self.doubleClicked.emit()
         return super().mouseDoubleClickEvent(e)
