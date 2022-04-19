@@ -7,6 +7,9 @@ PyQt QLabel for timer feature
 ## Setup
 ```pip3 install git+https://github.com/yjg30737/pyqt-timer-label.git --upgrade```
 
+## Included Packages
+* <a href="https://github.com/yjg30737/pyqt-responsive-label.git">pyqt-responsive-label</a>
+
 ## Detailed Description
 You can set start hour/min/sec. Same to end. You can use this when you want to make a timer label which follows ```hh:mm:ss``` format. By the way, default end time is 00:00:00. You can change it with methods i'll explain below.
 
@@ -14,7 +17,6 @@ You can set start hour/min/sec. Same to end. You can use this when you want to m
 * ```setStartHour(h: int)```, ```setStartMinute(m: int)```, ```setStartSecond(s: int)```. Same to end.
 * ```setTimerReverse(f: bool)``` to make timer go reversed. Default is True, which means subtracts one second.
 * There are useful methods like ```start()```, ```pause()```, ```restart()```, ```refresh()```, ```reset()```, ```stop()``` as well as useful signals like ```doubleClicked```, ```prepared```, ```started```, ```paused```, ```restarted```, ```refreshed```, ```resetSignal```, ```stopped```.
-* `setAutoResize(f: bool)` - Make label resize itself based on window's size.
 * `isPaused() -> bool` - Check if the timer being paused or not
 
 ## Example
