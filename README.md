@@ -8,7 +8,7 @@ PyQt QLabel for timer feature
 ```pip3 install git+https://github.com/yjg30737/pyqt-timer-label.git --upgrade```
 
 ## Included Packages
-* <a href="https://github.com/yjg30737/pyqt-responsive-label.git">pyqt-responsive-label</a>
+* <a href="https://github.com/yjg30737/pyqt-responsive-label.git">pyqt-responsive-label</a> - for auto-resize the font of label accordance with window's size 
 
 ## Detailed Description
 You can set start hour/min/sec. Same to end. You can use this when you want to make a timer label which follows ```hh:mm:ss``` format. By the way, default end time is 00:00:00. You can change it with methods i'll explain below.
