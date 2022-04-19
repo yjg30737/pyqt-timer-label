@@ -1,8 +1,6 @@
 import sys
 
-from PyQt5.QtCore import Qt, pyqtSignal, QTime, QTimer
-from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QLabel
+from PyQt5.QtCore import pyqtSignal, QTime, QTimer
 
 from pyqt_responsive_label.responsiveLabel import ResponsiveLabel
 
