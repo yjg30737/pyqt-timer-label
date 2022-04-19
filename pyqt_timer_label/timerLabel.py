@@ -4,8 +4,10 @@ from PyQt5.QtCore import Qt, pyqtSignal, QTime, QTimer
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QLabel
 
+from pyqt_responsive_label.responsiveLabel import ResponsiveLabel
 
-class TimerLabel(QLabel):
+
+class TimerLabel(ResponsiveLabel):
     doubleClicked = pyqtSignal()
     prepared = pyqtSignal()
     started = pyqtSignal()
@@ -39,12 +41,8 @@ class TimerLabel(QLabel):
         # init end time (00:00:00 by default)
         self.setEndHMS()
 
-        self.__auto_resize_flag = True
-
     def __initUi(self):
         self.setStartHMS()
-        self.setAlignment(Qt.AlignCenter)
-        self.setFont(QFont('Arial', 24))
 
     def setTimerReverse(self, f: bool):
         if f:
@@ -129,9 +127,6 @@ class TimerLabel(QLabel):
         self.__timer.stop()
         self.__timer.timeout.disconnect(self.__timerTicking)
 
-    def setAutoResize(self, f: bool):
-        self.__auto_resize_flag = f
-
     def reset(self):
         self.__resetTimer()
         self.resetSignal.emit()
@@ -156,9 +151,3 @@ class TimerLabel(QLabel):
     def mouseDoubleClickEvent(self, e):
         self.doubleClicked.emit()
         return super().mouseDoubleClickEvent(e)
-
-    def resizeEvent(self, e):
-        dpr = self.devicePixelRatio()
-        if self.__auto_resize_flag:
-            self.setFont(QFont('Arial', min(200 // dpr, max(10, self.widthMM() // dpr))))
-        return super().resizeEvent(e)
