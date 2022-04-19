@@ -10,6 +10,7 @@ setup(
     description='PyQt QLabel for timer feature',
     url='https://github.com/yjg30737/pyqt-timer-label.git',
     install_requires=[
-        'PyQt5>=5.8'
+        'PyQt5>=5.8',
+        'pyqt-responsive-label @ git+https://git@github.com/yjg30737/pyqt-responsive-label.git@main'
     ]
 )
