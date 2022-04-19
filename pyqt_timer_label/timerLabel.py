@@ -159,5 +159,5 @@ class TimerLabel(QLabel):
 
     def resizeEvent(self, e):
         if self.__auto_resize_flag:
-            self.setFont(QFont('Arial', max(10, self.widthMM() // 2)))
+            self.setFont(QFont('Arial', min(100, max(10, self.widthMM() // 3))))
         return super().resizeEvent(e)
