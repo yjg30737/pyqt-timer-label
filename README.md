@@ -1,11 +1,11 @@
 # pyqt-timer-label
-PyQt QLabel for timer feature
+PyQt QLabel adapted to timer feature
 
 ## Requirements
 * PyQt5 >= 5.8
 
 ## Setup
-```pip3 install git+https://github.com/yjg30737/pyqt-timer-label.git --upgrade```
+`python -m pip install pyqt-timer-label`
 
 ## Included Packages
 * <a href="https://github.com/yjg30737/pyqt-responsive-label.git">pyqt-responsive-label</a> - for auto-resize the font of label accordance with window's size 
