@@ -7,10 +7,10 @@ setup(
     author_email='yjg30737@gmail.com',
     license='MIT',
     packages=find_packages(),
-    description='PyQt QLabel for timer feature',
+    description='PyQt QLabel adapted to timer feature',
     url='https://github.com/yjg30737/pyqt-timer-label.git',
     install_requires=[
         'PyQt5>=5.8',
-        'pyqt-responsive-label @ git+https://git@github.com/yjg30737/pyqt-responsive-label.git@main'
+        'pyqt-responsive-label>=0.0.1'
     ]
 )
